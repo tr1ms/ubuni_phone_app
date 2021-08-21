@@ -40,8 +40,10 @@ class _ShopScreenState extends State<ShopScreen> {
             itemCount: data.length,
             itemBuilder: (context, index) => ListTile(
               // dense: true,
-              leading: CircleAvatar(
-                child: Image.network(data[index].url),
+              leading: Image.network(
+                data[index].url,
+                fit: BoxFit.contain,
+                width: 45,
               ),
               title: Text(data[index].name),
               subtitle: Text(data[index].brand),

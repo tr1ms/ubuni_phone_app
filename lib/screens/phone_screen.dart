@@ -4,6 +4,7 @@ import 'package:ubuni_phone_app/api/json_parsers/json_parser.dart';
 import 'package:ubuni_phone_app/models/Phone.dart';
 
 class PhoneScreen extends StatefulWidget {
+  /// id of a tapped phone item.
   final int id;
   const PhoneScreen({Key? key, required this.id}) : super(key: key);
 
@@ -41,24 +42,28 @@ class _PhoneScreenState extends State<PhoneScreen> {
 
             return Padding(
               padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.network(
-                    phone.url,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    phone.name,
-                    style: Theme.of(context).textTheme.headline2,
-                  ),
-                  Text(
-                    phone.brand,
-                    style: Theme.of(context).textTheme.headline4,
-                  )
-                ],
+              child: LayoutBuilder(
+                builder: (context, constraints) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      phone.url,
+                      fit: BoxFit.cover,
+                      width: constraints.maxWidth,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      phone.name,
+                      style: Theme.of(context).textTheme.headline2,
+                    ),
+                    Text(
+                      phone.brand,
+                      style: Theme.of(context).textTheme.headline4,
+                    )
+                  ],
+                ),
               ),
             );
           }
