@@ -1,3 +1,5 @@
+/// phone model
+
 class Phone {
   final int id;
   final String name;
@@ -9,6 +11,15 @@ class Phone {
       required this.url,
       required this.id,
       required this.name});
+
+  factory Phone.fromJson(Map<String, dynamic> json) => Phone(
+      brand: json['Brand'],
+      url: json['image_url'],
+      id: json['id'],
+      name: json['name']);
+
+  Map<String, dynamic> toJson() =>
+      {"brand": brand, "id": id, "name": name, "image_url": url};
 }
 
 // sample phones
